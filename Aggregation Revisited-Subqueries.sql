@@ -35,4 +35,13 @@ WHERE customer_id IN (
     WHERE cat.name = 'Action'
 );
 
+-- 4. Use the case statement to create a new column classifying existing columns as either low, medium, or high value transactions based on the amount of payment:
+SELECT payment_id, customer_id, amount,
+       CASE
+           WHEN amount BETWEEN 0 AND 2 THEN 'low'
+           WHEN amount BETWEEN 2 AND 4 THEN 'medium'
+           ELSE 'high'
+       END AS label
+FROM payment;
+
 
